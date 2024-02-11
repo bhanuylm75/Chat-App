@@ -1,0 +1,15 @@
+.side-con{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 5px 10px 5px 10px ;
+  border-width: 5px;
+  align-items: center;
+  background-color:white;
+
+}
+.menu{
+  display: flex;
+}
+
+
