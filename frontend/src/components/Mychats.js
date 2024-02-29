@@ -12,7 +12,7 @@ import { AddIcon } from "@chakra-ui/icons";
 const Mychats = ({fetchAgain}) => {
   const [loggedUser, setLoggedUser] = useState();
   const { selectedChat, setSelectedChat, user, chats, setChats } = ChatState();
-  console.log(chats)
+  console.log(user)
   const fetechchat=async()=>{
     const {data}=await axios.get("http://localhost:3008/api/chat/getchats" ,  {
       params: {

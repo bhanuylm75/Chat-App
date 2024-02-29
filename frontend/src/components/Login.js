@@ -43,18 +43,35 @@ const Login = () => {
     try {
 
       const {data}= await axios.post("http://localhost:3008/api/login" , { email, password })
-      toast({
-        title: "Login Successful",
-        status: "success",
-        duration: 5000,
-        isClosable: true,
-        position: "bottom",
-      });
+
+      
       console.log(data)
-      setUser(data);
-      localStorage.setItem("userInfo", JSON.stringify(data));
-      setLoading(false);
-      history.push("/chats");
+      if (data.status==="pass"){
+
+        toast({
+          title: "Login Successful",
+          status: "success",
+          duration: 5000,
+          isClosable: true,
+          position: "bottom",
+        });
+        setUser(data);
+        localStorage.setItem("userInfo", JSON.stringify(data));
+        setLoading(false);
+        history.push("/chats");
+
+      }
+
+      else{
+        toast({
+          title: "something went wrong pls check your crendentials",
+          status: "warning",
+          duration: 5000,
+          isClosable: true,
+          position: "bottom",
+        });
+      }
+       
       
     } catch (error) {
       

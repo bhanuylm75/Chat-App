@@ -3,27 +3,30 @@ import User from "../models/user.model.js"
 import Jwt from "jsonwebtoken"
 export const login=async(req,res)=>{
   const { email, password } = req.body;
-  console.log(req.body)
+  console.log("n jcen j")
+
+  console.log(req.body,"n jcen j")
 
   const user=await User.findOne({email})
   console.log(req.body)
   try{
     if(!user){
-      res.send("user not found")
-      return
+      res.send("user not found");
+     
     }
     if (password !== user?.password){
       res.send('Incorrect Password')
       return
   
     }
-    if (password === user?.password){
+    if (user && password === user?.password){
       res.json({
         _id: user._id,
         name: user.name,
         email: user.email,
         isAdmin: user.isAdmin,
         pic: user.pic,
+        status:"pass",
         token: Jwt.sign({ user}, "monkey", {
           expiresIn: "30d",
         }),
