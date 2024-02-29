@@ -32,7 +32,7 @@ const Singlechat = ({fetchAgain, setFetchAgain}) => {
   console.log(messages)
 
   useEffect(()=>{
-    socket=io(endpoint)
+    socket=io()
     socket.on("connected", () => setSocketConnected(true));
     socket.emit("setup", user);
     socket.on("typing", () => setIsTyping(true));
@@ -158,7 +158,7 @@ const Singlechat = ({fetchAgain, setFetchAgain}) => {
   <Profilemodal user={getSenderFull(user, selectedChat.users)}/>
   </>):(<>
    {selectedChat.chatName.toUpperCase()}
-   <Updategroupchatmodal fetchAgain={fetchAgain} setFetchAgain={setFetchAgain}/>
+   <Updategroupchatmodal fetchMessages={fetchtmessages} fetchAgain={fetchAgain} setFetchAgain={setFetchAgain}/>
    </>)}</div>
    <div className='chat example'>
    {loading ? (

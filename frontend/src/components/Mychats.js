@@ -20,7 +20,7 @@ const Mychats = ({fetchAgain}) => {
       },
     })
     setChats(data)
-    console.log(data)
+    console.log('again',data)
 
   }
   
